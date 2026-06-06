@@ -9,56 +9,82 @@ _\______  /(____  /|__|_|  /|____/_|___  /_|__|___|__|_\___  /|__|__\
 _____|__\/___|__\/_______\/___|________\/___|______|_______\/______\/
 __|_____|______|______|___|____|____|________|______|____|_____|___|_
 ```                                                                                                
-## Introduction
+# 🧱 Camlbrick — Casse-briques en OCaml
 
-**Camlbrick** est un jeu de casse-briques développé en **OCaml**, avec une interface graphique basée sur **Labltk**.  
+Jeu de casse-briques complet développé en **OCaml** avec une interface graphique **Labltk**.
 
-Le principe du jeu est classique :
+**Équipe :** Johan Forestier, Enzo Aurousseau, Auderick Guthoerl & Mathéo Ardouin
 
-- Faire disparaître toutes les briques d’un niveau avec une balle
-- Contrôler une raquette pour renvoyer la balle
-- Gérer plusieurs types de briques : simple, double, bloc, bonus
-- Les collisions sont gérées avec la raquette, les murs et les coins de briques
+---
 
-## Motivations
+## 🎮 Présentation
 
-Ce projet a été réalisé dans le cadre d'un enseignement à l'Université de Poitiers.  
+Camlbrick est une implémentation du jeu de casse-briques classique. Une balle rebondit sur une raquette contrôlée par le joueur et doit détruire toutes les briques d'un niveau. Le projet met l'accent sur la gestion des collisions, la physique de la balle et une architecture modulaire séparant le moteur de jeu de l'interface graphique.
 
-L'objectif était de manipuler :
+---
 
-- Les types et structures de données en OCaml (enregistrements, tableaux, listes)
-- Les fonctions de manipulation de vecteurs et calculs physiques simples
-- La programmation événementielle avec Labltk (souris, clavier, animation)
-- La gestion des collisions et de la logique de jeu
-- La conception modulaire entre moteur de jeu et interface graphique
+## ✨ Fonctionnalités
 
-## Prérequis
+- **Types de briques variés** : simple, double, bloc (indestructible) et bonus
+- **Gestion complète des collisions** : balle contre raquette, murs et coins de briques
+- **Contrôle de la raquette** au clavier et à la souris
+- **Progression par niveaux** : le niveau se termine quand toutes les briques destructibles disparaissent
+- **Animation fluide** via la programmation événementielle Labltk
+- **Architecture modulaire** : moteur de jeu séparé de l'interface graphique
 
-- OCaml ≥ 4.14  
-- OPAM  
-- Labltk
+---
 
-Installer les bibliothèques nécessaires :
+## 🗂️ Structure du projet
+
+```c
+.
+├── camlbrick.ml           # Moteur du jeu (logique, collisions, état)
+├── camlbrick_gui.ml       # Interface graphique Labltk
+└── camlbrick_launcher.ml  # Point d'entrée, initialisation et boucle principale
+```
+
+---
+
+## 🔧 Prérequis
+
+OCaml ≥ 4.14 et OPAM installés sur votre machine, ainsi que la bibliothèque **Labltk** :
 
 ```bash
 opam install labltk
 ```
-(sur Linux tk-dev est nécessaire) :
+
+Sur Linux, le paquet système `tk-dev` est également nécessaire :
+
 ```bash
 sudo apt install tk-dev
 ```
 
-## Compilation et exécution
+---
 
-Après avoir installé labltk, vous pouvez compiler et executer le programme :
+## ▶️ Compilation et exécution
+
+Compiler puis lancer le jeu :
+
 ```bash
-ocamlfind ocamlc -package labltk -linkpkg camlbrick.ml camlbrick_gui.ml camlbrick_launcher.ml -o camlbrick
+ocamlfind ocamlc -package labltk -linkpkg \
+  camlbrick.ml camlbrick_gui.ml camlbrick_launcher.ml \
+  -o camlbrick
+
 ./camlbrick
 ```
 
-## ✍️ Auteurs
+---
 
-- Johan Forestier
-- Enzo Aurousseau
-- Auderick Guthoerl
-- Mathéo Ardouin
+## 🎓 Motivations
+
+Ce projet a été réalisé dans le cadre d'un enseignement à l'Université de Poitiers. L'objectif était de manipuler :
+
+- Les types et structures de données en OCaml (enregistrements, tableaux, listes)
+- Les fonctions de manipulation de vecteurs et calculs physiques simples
+- La programmation événementielle avec Labltk (souris, clavier, animation)
+- La gestion des collisions et la logique de jeu
+- La conception modulaire entre moteur de jeu et interface graphique
+
+---
+
+*Projet réalisé dans le cadre de l'UE Programmation en OCaml — 2025.*
